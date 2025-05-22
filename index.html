@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Calculadora</title>
+  <link rel="stylesheet" href="estilo.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Calculadora de Creatinina</h1>
+
+    <div class="form-group">
+      <input type="number" id="idade" placeholder="Idade" />
+      <input type="number" id="peso" placeholder="Peso (kg)" />
+      <input type="number" id="creat" placeholder="Creatinina" />
+      <button onclick="calcular()">Calcular</button>
+    </div>
+
+    <div class="result">
+      <p id="resul.h"></p>
+      <p id="resul.m"></p>
+    </div>
+  </div>
+
+  <script>
+    function calcular() {
+      const idade = Number(document.getElementById('idade').value);
+      const peso  = Number(document.getElementById('peso').value);
+      const creat = Number(document.getElementById('creat').value);
+
+      const h = ((140 - idade) * peso) / (72 * creat);
+      const m = h * 0.85;
+
+      document.getElementById('resul.h').textContent =
+        h < 55 ? `Resultado Homem: ${h.toFixed(2)} - HIDRATAR` : `Resultado Homem: ${h.toFixed(2)}`;
+      document.getElementById('resul.m').textContent =
+        m < 55 ? `Resultado Mulher: ${m.toFixed(2)} - HIDRATAR` : `Resultado Mulher: ${m.toFixed(2)}`;
+    }
+  </script>
+</body>
+</html>
